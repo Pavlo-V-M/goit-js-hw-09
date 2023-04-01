@@ -43,7 +43,7 @@ const options = {
     // + Check if selected date is in the future 
     // + alert + block startButton
     if (endDate < currentDate) {
-      window.alert('Please choose a date in the future');
+      alert('Please choose a date in the future');
       startButton.disabled = true;
     } else {
       startButton.disabled = false;

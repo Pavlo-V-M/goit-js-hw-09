@@ -10,7 +10,14 @@ form.addEventListener('submit', (e) => {
   const step = Number(form.step.value);
   const amount = Number(form.amount.value);
 
-  for (let i = 0; i < amount; i += 1) {
+  // check for negative values:
+  // if delay or step is less than 0, or amount = 0, then promises are not generated. 
+  // Otherwise, the promise is generated according to the source code.
+
+  if (delay < 0 || step < 0 || amount === 0) {
+    console.log('Invalid input values');
+  } else {
+    for (let i = 0; i < amount; i += 1) {
     const position = i + 1;
     const promiseDelay = delay + step * i;
 
@@ -21,6 +28,7 @@ form.addEventListener('submit', (e) => {
       .catch(({ position, delay }) => {
         console.log(`❌ Rejected promise ${position} in ${delay}ms`);
       });
+    }
   }
 });
 
